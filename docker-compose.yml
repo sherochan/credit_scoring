@@ -1,0 +1,18 @@
+version: '3.6'
+
+services:
+  credit-scoring-notebook:
+    image: credit-scoring-notebook
+    build:
+      context: ./
+    command:
+      - /bin/sh
+      - -c
+      - |
+        jupyter notebook --NotebookApp.token='user' --ip=0.0.0.0 --allow-root --port 8888
+    volumes:
+      - ./notebook:/app
+    ports:
+      - "8890:8888"
+
+
